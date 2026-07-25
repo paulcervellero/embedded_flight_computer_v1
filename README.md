@@ -1,192 +1,207 @@
-# Embedded Flight Computer & Telemetry Logger
+# Project Falcon
 
-This project is a professional embedded-systems portfolio project focused on flight-style telemetry, validation, and hardware/software integration.
+## Embedded Flight Computer and Telemetry System
 
-The project begins with a software telemetry simulator, then expands into STM32 firmware, sensor integration, and hardware-in-the-loop testing.
+Project Falcon is a professional embedded systems engineering project focused on the design, implementation, verification, and documentation of a modular flight telemetry system based on the STM32 platform.
 
-## Part 1: Telemetry Simulator
+The objective of the project is to demonstrate disciplined embedded systems engineering through structured system design, modular firmware development, hardware integration, verification, and technical documentation.
 
-Part 1 creates a complete telemetry pipeline in Python.
+---
 
-It can:
+# Project Status
 
-- Generate simulated flight telemetry
-- Write CSV flight logs
-- Add CRC-16 checksums
-- Validate packet integrity
-- Check sample timing
-- Detect corrupted data
-- Generate engineering plots
-- Run automated tests
+**Current Phase**
 
-## Why This Project Matters
+Phase 4 — Firmware and Hardware Implementation
 
-Embedded systems are not just about writing firmware. A strong engineering system also needs:
+**Project Status**
 
-- Clear data formats
-- Repeatable testing
-- Error checking
-- Validation tools
-- Logs
-- Plots
-- Documentation
+- Foundation — Complete
+- Engineering Design — Complete
+- Critical Design Review — Complete
+- Firmware Development — Beginning
 
-This project builds that foundation before adding physical STM32 hardware.
+---
 
-## Project Structure
+# Project Objectives
 
-```text
-embedded_flight_computer_v1
-├── tools
-│   ├── telemetry_schema.py
-│   ├── generate_sample_log.py
-│   ├── validate_log.py
-│   └── plot_log.py
-├── tests
-│   └── run_tests.py
-├── sample_data
-│   └── flight_log_sample.csv
-├── reports
-│   ├── altitude_profile.png
-│   ├── acceleration_z.png
-│   ├── gyro_x.png
-│   ├── battery_voltage.png
-│   └── pressure.png
-├── docs
-│   └── part1_design.md
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
+Project Falcon is designed to demonstrate the complete embedded systems development lifecycle.
 
-## Telemetry Fields
+Primary objectives include:
 
-Each telemetry record contains:
+- Design a modular embedded flight computer
+- Acquire and process sensor data
+- Generate structured telemetry packets
+- Log telemetry to removable storage
+- Communicate with external software over UART
+- Verify system performance through documented testing
+- Produce professional engineering documentation
 
-- Sequence number
-- Timestamp
-- Flight state
-- Acceleration values
-- Gyroscope values
-- Barometric pressure
-- Estimated altitude
-- Battery voltage
-- GPS fix status
-- Latitude and longitude
-- CRC-16 checksum
+---
 
-## Flight States
+# System Overview
 
-The simulator models four basic flight states:
+Project Falcon consists of the following major subsystems:
 
-1. `PRELAUNCH`
-2. `ASCENT`
-3. `DESCENT`
-4. `LANDED`
+- STM32 Embedded Flight Computer
+- Telemetry Packet Generator
+- Sensor Interface Layer
+- Data Logging System
+- Python Telemetry Tools
+- Verification and Test Framework
 
-## Setup
+---
 
-Create and activate a Python virtual environment:
+# Hardware Platform
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+The current hardware platform consists of:
 
-Install dependencies:
+- STM32 NUCLEO-F401RE
+- ICM-20948 Inertial Measurement Unit
+- BMP280 Barometric Pressure Sensor
+- u-blox GPS Receiver
+- SPI microSD Storage Module
 
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
+---
 
-## Generate a Sample Flight Log
+# Software Technologies
 
-```bash
-python tools/generate_sample_log.py --out sample_data/flight_log_sample.csv --duration 90 --rate-hz 10
-```
+Embedded Software
 
-## Validate the Log
+- Embedded C
+- STM32 HAL
+- UART
+- SPI
+- I²C
 
-```bash
-python tools/validate_log.py sample_data/flight_log_sample.csv
-```
+Desktop Software
 
-Expected result:
+- Python
+- Git
+- GitHub
+- Visual Studio Code
+
+---
+
+# Repository Structure
 
 ```text
-Validation passed: CRC, sequence timing, and ranges look good.
+embedded_flight_computer_v1/
+
+docs/
+firmware/
+reports/
+sample_data/
+tests/
+tools/
+
+README.md
+LICENSE
+CHANGELOG.md
+requirements.txt
 ```
 
-## Generate Plots
+---
 
-```bash
-python tools/plot_log.py sample_data/flight_log_sample.csv --out reports
-```
+# Engineering Documentation
 
-## Run Tests
-
-```bash
-python tests/run_tests.py
-```
-
-Expected result:
+Engineering documentation is organized into the following categories.
 
 ```text
-All tests passed.
+01_Project
+02_System
+03_Firmware
+04_Hardware
+05_Testing
+06_Diagrams
+07_Reviews
 ```
 
-## Results
+Current documentation includes:
 
-### Altitude Profile
+- Project Execution Plan
+- Requirements
+- System Architecture
+- Telemetry Packet Specification
+- Hardware Plan
+- Interface Control Document
+- Firmware Architecture
+- Coding Standard
+- Risk Register
+- Requirements Verification Matrix
+- Test Plan
+- Bill of Materials
 
-![Altitude Profile](reports/altitude_profile.png)
+---
 
-### Vertical Acceleration
+# Engineering Principles
 
-![Vertical Acceleration](reports/acceleration_z.png)
+Project Falcon is developed according to the following engineering principles.
 
-### Gyroscope X-Axis
+- Design before implementation.
+- One responsibility per module.
+- Every requirement shall be verifiable.
+- Official documentation takes precedence over assumptions.
+- Version control all engineering artifacts.
+- Build incrementally.
+- Understand every line of code.
+- Design for failure and recovery.
+- Every engineering artifact must provide measurable value.
+- Build for long-term maintainability.
 
-![Gyroscope X-Axis](reports/gyro_x.png)
+---
 
-### Battery Voltage
+# Development Lifecycle
 
-![Battery Voltage](reports/battery_voltage.png)
+| Stage | Status |
+|--------|--------|
+| Foundation | Complete |
+| Engineering Design | Complete |
+| Critical Design Review | Complete |
+| Firmware Development | In Progress |
+| Hardware Integration | Planned |
+| System Verification | Planned |
+| Version 1.0 Release | Planned |
 
-### Barometric Pressure
+---
 
-![Barometric Pressure](reports/pressure.png)
+# Planned Version 1.0 Capabilities
 
-## Validation Checks
+Project Falcon Version 1.0 will include:
 
-The validator checks:
+- Modular firmware architecture
+- Sensor acquisition
+- Flight state management
+- Telemetry generation
+- CRC validation
+- UART communication
+- SD card logging
+- Python telemetry analysis
+- Engineering verification reports
 
-- Correct CSV header
-- CRC checksum integrity
-- Sequence continuity
-- Timing consistency
-- Battery range
-- Altitude range
-- GPS fix value
+---
 
-## Future Parts
+# Future Development
 
-Planned next phases:
+Future revisions may include:
 
-1. STM32 firmware bring-up
-2. UART telemetry output
-3. Flight state machine in embedded C
-4. CRC-protected embedded packets
-5. Python serial logger
-6. IMU, barometer, and GPS integration
-7. Hardware-in-the-loop test bench
-8. Linux/C++ telemetry analyzer
+- Sensor fusion
+- RTOS integration
+- Radio telemetry
+- FPGA co-processing
+- Hardware-in-the-loop testing
+- Autonomous flight algorithms
 
-## Resume Summary
+---
 
-**Embedded Flight Computer & Telemetry Logger**
+# License
 
-- Designed a flight-style telemetry pipeline with simulated sensor data, CRC-protected packets, validation tools, and engineering plots.
-- Built Python tools to generate, parse, validate, and visualize telemetry logs at 10 Hz.
-- Created automated tests to verify CRC integrity, timing consistency, CSV parsing, and corrupted packet detection.
+Licensed under the Apache License, Version 2.0.
+
+See the LICENSE file for additional information.
+
+---
+
+# Author
+
+Paul Cervellero
