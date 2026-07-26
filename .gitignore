@@ -12,3 +12,15 @@ __pycache__/
 # Temporary files
 *.log
 *.tmp
+# STM32CubeIDE build output
+**/Debug/
+**/Release/
+
+# Build artifacts
+*.elf
+*.map
+*.list
+*.o
+*.d
+*.su
+*.cyclo
