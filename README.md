@@ -2,71 +2,114 @@
 
 ## Embedded Flight Computer and Telemetry System
 
-Project Falcon is a professional embedded systems engineering project focused on the design, implementation, verification, and documentation of a modular flight telemetry system based on the STM32 platform.
+Project Falcon is a software-first embedded systems engineering project focused on a modular STM32-based flight telemetry system.
 
-The objective of the project is to demonstrate disciplined embedded systems engineering through structured system design, modular firmware development, hardware integration, verification, and technical documentation.
+The goal is to develop a clean firmware architecture now, then integrate the real hardware later without rewriting the whole system.
 
 ---
 
 # Project Status
 
-**Current Phase**
-
-Phase 4 — Firmware and Hardware Implementation
-
-**Project Status**
-
 - Foundation — Complete
 - Engineering Design — Complete
 - Critical Design Review — Complete
-- Firmware Development — Beginning
+- Software Baseline — Complete
+- Hardware Integration — Planned
 
 ---
 
-# Project Objectives
+# Current Software Baseline
 
-Project Falcon is designed to demonstrate the complete embedded systems development lifecycle.
+Falcon currently includes:
 
-Primary objectives include:
+- application layer
+- cooperative scheduler
+- simulated sensors
+- navigation calculations
+- flight-state machine
+- health monitoring
+- telemetry packet generation
+- RAM logger
+- startup self-tests
 
-- Design a modular embedded flight computer
-- Acquire and process sensor data
-- Generate structured telemetry packets
-- Log telemetry to removable storage
-- Communicate with external software over UART
-- Verify system performance through documented testing
-- Produce professional engineering documentation
-
----
-
-# System Overview
-
-Project Falcon consists of the following major subsystems:
-
-- STM32 Embedded Flight Computer
-- Telemetry Packet Generator
-- Sensor Interface Layer
-- Data Logging System
-- Python Telemetry Tools
-- Verification and Test Framework
+The current firmware builds cleanly in STM32CubeIDE.
 
 ---
 
-# Hardware Platform
+# Firmware Location
 
-The current hardware platform consists of:
+The STM32 firmware project lives here:
 
-- STM32 NUCLEO-F401RE
-- ICM-20948 Inertial Measurement Unit
-- BMP280 Barometric Pressure Sensor
-- u-blox GPS Receiver
-- SPI microSD Storage Module
+`firmware/Falcon_Firmware/`
+
+---
+
+# Telemetry Decoder
+
+A Python telemetry decoder is included at:
+
+`tools/telemetry_decoder.py`
+
+Run it like this:
+
+`python3 tools/telemetry_decoder.py <hex_packet>`
+
+Example:
+
+`python3 tools/telemetry_decoder.py AA550000E80300000000000000000000000000000000000000000000BEEF`
+
+This tool validates the sync word and CRC, then prints the packet contents in a readable format.
+
+---
+
+# Documentation
+
+Engineering documentation is organized into:
+
+- `docs/01_Project`
+- `docs/02_System`
+- `docs/03_Firmware`
+- `docs/04_Hardware`
+- `docs/05_Testing`
+- `docs/06_Diagrams`
+- `docs/07_Reviews`
+
+---
+
+# Development Approach
+
+Falcon follows a software-first workflow:
+
+1. Define the architecture.
+2. Build the software baseline.
+3. Verify behavior with self-tests and desktop tools.
+4. Integrate hardware later.
+5. Replace simulation with real drivers without redesigning the whole project.
+
+That approach keeps the firmware clean and makes the hardware phase much easier when the board and sensors arrive.
+
+---
+
+# Repository Structure
+
+`embedded_flight_computer_v1/`
+
+- `docs/`
+- `firmware/`
+- `reports/`
+- `sample_data/`
+- `tests/`
+- `tools/`
+- `README.md`
+- `LICENSE`
+- `CHANGELOG.md`
+- `requirements.txt`
 
 ---
 
 # Software Technologies
 
-Embedded Software
+## Embedded Software
 
 - Embedded C
 - STM32 HAL
@@ -74,7 +117,7 @@ Embedded Software
 - SPI
 - I²C
 
-Desktop Software
+## Desktop Software
 
 - Python
 - Git
@@ -83,85 +126,9 @@ Desktop Software
 
 ---
 
-# Repository Structure
+# Build Status
 
-```text
-embedded_flight_computer_v1/
-
-docs/
-firmware/
-reports/
-sample_data/
-tests/
-tools/
-
-README.md
-LICENSE
-CHANGELOG.md
-requirements.txt
-```
-
----
-
-# Engineering Documentation
-
-Engineering documentation is organized into the following categories.
-
-```text
-01_Project
-02_System
-03_Firmware
-04_Hardware
-05_Testing
-06_Diagrams
-07_Reviews
-```
-
-Current documentation includes:
-
-- Project Execution Plan
-- Requirements
-- System Architecture
-- Telemetry Packet Specification
-- Hardware Plan
-- Interface Control Document
-- Firmware Architecture
-- Coding Standard
-- Risk Register
-- Requirements Verification Matrix
-- Test Plan
-- Bill of Materials
-
----
-
-# Engineering Principles
-
-Project Falcon is developed according to the following engineering principles.
-
-- Design before implementation.
-- One responsibility per module.
-- Every requirement shall be verifiable.
-- Official documentation takes precedence over assumptions.
-- Version control all engineering artifacts.
-- Build incrementally.
-- Understand every line of code.
-- Design for failure and recovery.
-- Every engineering artifact must provide measurable value.
-- Build for long-term maintainability.
-
----
-
-# Development Lifecycle
-
-| Stage | Status |
-|--------|--------|
-| Foundation | Complete |
-| Engineering Design | Complete |
-| Critical Design Review | Complete |
-| Firmware Development | In Progress |
-| Hardware Integration | Planned |
-| System Verification | Planned |
-| Version 1.0 Release | Planned |
+The current Falcon software baseline builds successfully in STM32CubeIDE.
 
 ---
 
@@ -169,15 +136,15 @@ Project Falcon is developed according to the following engineering principles.
 
 Project Falcon Version 1.0 will include:
 
-- Modular firmware architecture
-- Sensor acquisition
-- Flight state management
-- Telemetry generation
+- modular firmware architecture
+- sensor acquisition
+- flight state management
+- telemetry generation
 - CRC validation
 - UART communication
 - SD card logging
 - Python telemetry analysis
-- Engineering verification reports
+- engineering verification reports
 
 ---
 
@@ -185,12 +152,12 @@ Project Falcon Version 1.0 will include:
 
 Future revisions may include:
 
-- Sensor fusion
+- sensor fusion
 - RTOS integration
-- Radio telemetry
+- radio telemetry
 - FPGA co-processing
-- Hardware-in-the-loop testing
-- Autonomous flight algorithms
+- hardware-in-the-loop testing
+- autonomous flight algorithms
 
 ---
 
