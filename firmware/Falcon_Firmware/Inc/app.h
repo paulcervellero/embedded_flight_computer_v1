@@ -1,17 +1,13 @@
 /******************************************************************************
  * Project Falcon
- * File: main.c
- * Description: Minimal application entry point.
+ * File: app.h
+ * Description: Public interface for the Falcon application layer.
  ******************************************************************************/
 
-#include "app.h"
+#ifndef APP_H
+#define APP_H
 
-int main(void)
-{
-    app_init();
+void app_init(void);
+void app_run(void);
 
-    while (1)
-    {
-        app_run();
-    }
-}
+#endif
