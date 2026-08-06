@@ -6,50 +6,40 @@ Falcon is an embedded systems engineering project focused on developing reliable
 
 ---
 
-## Contents
+## Overview
 
-- Overview
-- Project Goals
-- Project Status
-- System Architecture
-- Current Capabilities
-- Repository Structure
-- Development Workflow
-- Building the Firmware
-- Telemetry Decoder
-- Documentation
-- Technologies
-- Roadmap
-- License
+Project Falcon is designed to simulate a professional embedded software development environment. The project emphasizes modular firmware architecture, engineering documentation, version control, and verification before hardware integration.
+
+The objective is to create firmware that can transition from simulated components to real STM32 hardware with minimal architectural changes.
 
 ---
 
 ## Project Goals
 
-Falcon was created to explore professional embedded software development using STM32 microcontrollers while following industry-style engineering practices.
+The primary goals of Falcon are to:
 
-Primary objectives include:
-
-- Modular firmware architecture
-- Reliable telemetry generation
-- Flight-state management
-- Hardware abstraction
-- Software verification
-- Engineering documentation
-- Version-controlled development workflow
+- Design modular embedded firmware
+- Develop reliable telemetry generation
+- Implement flight-state management
+- Separate hardware abstraction from application logic
+- Follow professional software engineering workflows
+- Maintain comprehensive engineering documentation
+- Prepare for seamless STM32 hardware integration
 
 ---
 
 ## Project Status
 
-- [x] Repository organization
-- [x] System architecture
-- [x] Engineering documentation
-- [x] Firmware software baseline
-- [ ] STM32 hardware integration
-- [ ] Sensor integration
-- [ ] SD card logging
-- [ ] Flight testing
+| Component | Status |
+|-----------|:------:|
+| Repository Organization | Complete |
+| System Architecture | Complete |
+| Engineering Documentation | Complete |
+| Software Baseline | Complete |
+| STM32 Hardware Integration | Planned |
+| Sensor Integration | Planned |
+| SD Card Logging | Planned |
+| Flight Testing | Planned |
 
 ---
 
@@ -64,11 +54,12 @@ Primary objectives include:
 │          Falcon Flight Computer         │
 ├─────────────────────────────────────────┤
 │ Application Layer                       │
-│ ├── Flight Logic                        │
-│ ├── Navigation                          │
-│ ├── Telemetry                           │
-│ ├── Health Monitoring                   │
-│ └── Data Logging                        │
+│                                         │
+│ • Flight Logic                          │
+│ • Navigation                            │
+│ • Telemetry                             │
+│ • Health Monitoring                     │
+│ • Data Logging                          │
 ├─────────────────────────────────────────┤
 │ Hardware Abstraction Layer              │
 ├─────────────────────────────────────────┤
@@ -82,7 +73,7 @@ Primary objectives include:
 
 The current firmware software baseline includes:
 
-- Application layer
+- Modular application layer
 - Cooperative scheduler
 - Simulated sensors
 - Navigation calculations
@@ -98,7 +89,7 @@ The firmware currently builds successfully in STM32CubeIDE.
 
 ## Repository Structure
 
-```
+```text
 embedded_flight_computer_v1/
 │
 ├── docs/
@@ -107,39 +98,24 @@ embedded_flight_computer_v1/
 ├── sample_data/
 ├── tests/
 ├── tools/
-├── README.md
-├── LICENSE
+│
 ├── CHANGELOG.md
+├── LICENSE
+├── README.md
 └── requirements.txt
 ```
 
 ---
 
-## Firmware Location
+## Firmware
 
 The STM32 firmware project is located in:
 
-```
+```text
 firmware/Falcon_Firmware/
 ```
 
----
-
-## Building the Firmware
-
-### Requirements
-
-- STM32CubeIDE
-- STM32 HAL
-- ARM GCC Toolchain
-
-Open the project located in:
-
-```
-firmware/Falcon_Firmware/
-```
-
-Then build the firmware using STM32CubeIDE.
+Open the project in **STM32CubeIDE** to build and run the firmware.
 
 ---
 
@@ -149,7 +125,7 @@ A Python telemetry decoder is included for validating generated telemetry packet
 
 Location:
 
-```
+```text
 tools/telemetry_decoder.py
 ```
 
@@ -165,14 +141,14 @@ Example:
 python3 tools/telemetry_decoder.py AA550000E80300000000000000000000000000000000000000000000BEEF
 ```
 
-The decoder validates:
+The decoder verifies:
 
 - Synchronization word
-- Packet integrity
 - CRC
-- Packet contents
+- Packet integrity
+- Telemetry contents
 
-before displaying the telemetry in a human-readable format.
+before displaying the decoded packet in a readable format.
 
 ---
 
@@ -180,7 +156,7 @@ before displaying the telemetry in a human-readable format.
 
 Engineering documentation is organized into:
 
-```
+```text
 docs/
 ├── 01_Project
 ├── 02_System
@@ -191,20 +167,22 @@ docs/
 └── 07_Reviews
 ```
 
+Documentation is maintained throughout development to capture architecture decisions, testing, design reviews, and verification activities.
+
 ---
 
 ## Development Workflow
 
 Falcon follows a software-first engineering process.
 
-1. Define the system architecture.
-2. Implement modular firmware.
-3. Verify behavior using desktop tools and self-tests.
+1. Define system architecture.
+2. Develop modular firmware.
+3. Verify functionality using simulation and desktop tools.
 4. Integrate STM32 hardware.
-5. Validate the complete embedded system.
-6. Expand capabilities through iterative development.
+5. Validate complete system behavior.
+6. Expand functionality through iterative development.
 
-This workflow allows firmware development to mature independently of hardware availability while maintaining a clean, scalable architecture.
+This workflow allows software architecture to mature independently of hardware availability while maintaining a clean and scalable design.
 
 ---
 
@@ -218,12 +196,16 @@ This workflow allows firmware development to mature independently of hardware av
 - SPI
 - I²C
 
-### Desktop Tools
+### Development Tools
 
-- Python
+- STM32CubeIDE
 - Git
 - GitHub
 - Visual Studio Code
+
+### Desktop Tools
+
+- Python
 
 ---
 
@@ -253,9 +235,9 @@ This workflow allows firmware development to mature independently of hardware av
 
 ## License
 
-Licensed under the Apache License 2.0.
+This project is licensed under the Apache License 2.0.
 
-See the LICENSE file for additional information.
+See the `LICENSE` file for additional information.
 
 ---
 
@@ -265,3 +247,7 @@ See the LICENSE file for additional information.
 
 Computer Engineering Student  
 University of South Carolina
+
+Portfolio: https://paulcervellero.github.io
+
+LinkedIn: https://www.linkedin.com/in/paul-cervellero-19b43a237/
